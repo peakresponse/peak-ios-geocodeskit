@@ -3,13 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		458CA09A2755A23C0065F324 /* ICD10CMParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CA0992755A23C0065F324 /* ICD10CMParser.swift */; };
 		458CA09C2755B2240065F324 /* CodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458CA09B2755B2240065F324 /* CodesViewController.swift */; };
 		458E8B8F30536D1E0071CE76 /* GeocodesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 458E8B8E30536D1E0071CE76 /* GeocodesKit */; };
+		45903D583054980100559BD1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45903D57305497FB00559BD1 /* BaseViewController.swift */; };
+		45903D5A305499BD00559BD1 /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45903D59305499B700559BD1 /* CitiesViewController.swift */; };
+		45903D5C305499C600559BD1 /* CountiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45903D5B305499C000559BD1 /* CountiesViewController.swift */; };
+		45903D5E305499CC00559BD1 /* StatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45903D5D305499C900559BD1 /* StatesViewController.swift */; };
 		459DC4D22DADBE1A00761142 /* GeocodesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 459DC4D12DADBE1A00761142 /* GeocodesKit */; };
 		459DC4D62DADBE4300761142 /* GeocodesKit in Frameworks */ = {isa = PBXBuildFile; productRef = 459DC4D52DADBE4300761142 /* GeocodesKit */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -34,6 +38,10 @@
 		458CA092275560990065F324 /* GeocodesKit_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GeocodesKit_Example.entitlements; sourceTree = "<group>"; };
 		458CA0992755A23C0065F324 /* ICD10CMParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICD10CMParser.swift; sourceTree = "<group>"; };
 		458CA09B2755B2240065F324 /* CodesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodesViewController.swift; sourceTree = "<group>"; };
+		45903D57305497FB00559BD1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		45903D59305499B700559BD1 /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
+		45903D5B305499C000559BD1 /* CountiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountiesViewController.swift; sourceTree = "<group>"; };
+		45903D5D305499C900559BD1 /* StatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatesViewController.swift; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* GeocodesKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeocodesKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +53,10 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		452F09573054B3040032F100 /* Fixtures */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Fixtures; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		451BE0B82DADB893007BC936 /* Frameworks */ = {
@@ -97,7 +109,12 @@
 		607FACD21AFB9204008FA782 /* Example for GeocodesKit */ = {
 			isa = PBXGroup;
 			children = (
+				452F09573054B3040032F100 /* Fixtures */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				45903D59305499B700559BD1 /* CitiesViewController.swift */,
+				45903D5B305499C000559BD1 /* CountiesViewController.swift */,
+				45903D57305497FB00559BD1 /* BaseViewController.swift */,
+				45903D5D305499C900559BD1 /* StatesViewController.swift */,
 				607FACD71AFB9204008FA782 /* ChaptersViewController.swift */,
 				458CA09B2755B2240065F324 /* CodesViewController.swift */,
 				458CA0992755A23C0065F324 /* ICD10CMParser.swift */,
@@ -149,6 +166,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				452F09573054B3040032F100 /* Fixtures */,
 			);
 			name = GeocodesKit_Example;
 			productName = GeocodesKit;
@@ -244,10 +264,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45903D5E305499CC00559BD1 /* StatesViewController.swift in Sources */,
+				45903D583054980100559BD1 /* BaseViewController.swift in Sources */,
 				458CA09A2755A23C0065F324 /* ICD10CMParser.swift in Sources */,
 				458CA09C2755B2240065F324 /* CodesViewController.swift in Sources */,
+				45903D5A305499BD00559BD1 /* CitiesViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ChaptersViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				45903D5C305499C600559BD1 /* CountiesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
