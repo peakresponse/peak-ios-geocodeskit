@@ -66,7 +66,9 @@ class CitiesViewController: BaseViewController {
                             continue
                         }
                         let censusClassCode = String(parts[4]).trimmingCharacters(in: .whitespacesAndNewlines)
-                        if censusClassCode.starts(with: "H") || censusClassCode.starts(with: "P") || censusClassCode.starts(with: "X") || censusClassCode.starts(with: "Z") {
+                        if censusClassCode.starts(with: "H") || censusClassCode.starts(with: "P") ||
+                            censusClassCode.starts(with: "S") || censusClassCode.starts(with: "T") ||
+                            censusClassCode.starts(with: "X") || censusClassCode.starts(with: "Z") {
                             continue
                         }
                         let stateId = Int(String(parts[8]).trimmingCharacters(in: .whitespacesAndNewlines))
