@@ -75,8 +75,7 @@ class CountiesViewController: BaseViewController {
                             county.id = id
                             realm.add(county, update: .modified)
                         }
-                        county.stateId = stateId
-                        county.countyId = countyId
+                        county.state = realm.object(ofType: GEOState.self, forPrimaryKey: stateId)
                         county.name = name
                         county.fipsClass = fipsClass
                         county.status = status
@@ -97,7 +96,7 @@ class CountiesViewController: BaseViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "County", for: indexPath)
         if let record = results?[indexPath.row] {
-            cell.textLabel?.text = "\(record.id ?? "") (\(record.stateId ?? ""), \(record.countyId ?? "")): \(record.name ?? "") (\(record.fipsClass ?? ""), \(record.status ?? ""))"
+            cell.textLabel?.text = "\(record.id ?? "") (\(record.state?.abbr ?? "")): \(record.name ?? "") (\(record.fipsClass ?? ""), \(record.status ?? ""))"
         }
         return cell
     }

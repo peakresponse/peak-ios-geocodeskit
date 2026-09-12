@@ -11,7 +11,15 @@ import RealmSwift
 open class GEOCity: Object {
     @Persisted(primaryKey: true) open var id: String?
     @Persisted open var name: String?
-    open var shortName: String? {
+    @Persisted open var featureName: String?
+    @Persisted open var featureClass: String?
+    @Persisted open var censusClassCode: String?
+    @Persisted open var state: GEOState?
+    @Persisted open var county: GEOCounty?
+    @Persisted open var latitude: Double?
+    @Persisted open var longitude: Double?
+
+    public static func base(_ name: String?) -> String? {
         if let name {
             if name.starts(with: "City of the ") {
                 return String(name[name.index(name.startIndex, offsetBy: 12)...])
@@ -37,16 +45,4 @@ open class GEOCity: Object {
         }
         return name
     }
-    @Persisted open var featureClass: String?
-    @Persisted open var censusClassCode: String?
-    @Persisted open var stateId: String?
-    @Persisted open var countyId: String?
-    open var countyGeoId: String? {
-        if let stateId, let countyId {
-            return "\(stateId)\(countyId)"
-        }
-        return nil
-    }
-    @Persisted open var latitude: Double?
-    @Persisted open var longitude: Double?
 }

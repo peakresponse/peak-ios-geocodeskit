@@ -60,7 +60,7 @@ class CitiesViewController: BaseViewController {
                         let parts = line.split(separator: "|", omittingEmptySubsequences: false)
 
                         let id = String(parts[0]).trimmingCharacters(in: .whitespacesAndNewlines)
-                        let name = String(parts[1]).trimmingCharacters(in: .whitespacesAndNewlines)
+                        let featureName = String(parts[1]).trimmingCharacters(in: .whitespacesAndNewlines)
                         let featureClass = String(parts[2]).trimmingCharacters(in: .whitespacesAndNewlines)
                         if featureClass != "Civil" && featureClass != "Populated Place" && featureClass != "Military" {
                             continue
@@ -88,14 +88,15 @@ class CitiesViewController: BaseViewController {
                             city.id = id
                             realm.add(city, update: .modified)
                         }
-                        city.name = name
+                        city.featureName = featureName
+                        city.name = GEOCity.base(featureName)
                         city.featureClass = featureClass
                         city.censusClassCode = censusClassCode
                         if let stateId {
-                            city.stateId = String(format: "%02d", stateId)
-                        }
-                        if let countyId {
-                            city.countyId = String(format: "%03d", countyId)
+                            city.state = realm.object(ofType: GEOState.self, forPrimaryKey: String(format: "%02d", stateId))
+                            if let countyId {
+                                city.county = realm.object(ofType: GEOCounty.self, forPrimaryKey: "\(String(format: "%02d", stateId))\(String(format: "%03d", countyId))")
+                            }
                         }
                         city.latitude = latitude
                         city.longitude = longitude
@@ -122,7 +123,7 @@ class CitiesViewController: BaseViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "City", for: indexPath)
         if let record = results?[indexPath.row] {
-            cell.textLabel?.text = "\(record.id ?? ""): \(record.name ?? "") (\(record.featureClass ?? ""), \(record.censusClassCode ?? "")), \(record.stateId ?? "") - \(record.countyId ?? ""), (\(record.latitude ?? 0.0), \(record.longitude ?? 0.0))"
+            cell.textLabel?.text = "\(record.id ?? ""): \(record.name ?? "") (\(record.featureClass ?? ""), \(record.censusClassCode ?? "")), \(record.state?.abbr ?? "") - \(record.county?.name ?? ""), (\(record.latitude ?? 0.0), \(record.longitude ?? 0.0))"
         }
         return cell
     }
