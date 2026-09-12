@@ -57,8 +57,8 @@ class BaseViewController: UITableViewController, UIDocumentPickerDelegate {
 
     @IBAction @MainActor func exportPressed() {
         showSpinner()
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            if let realm = try? GEORealm.open() {
+        Task.detached { [weak self] in
+            if let realm = try? await GEORealm.openAsync() {
                 let fileManager = FileManager.default
                 let documentDirectory = try? fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
                 let url = documentDirectory?.appendingPathComponent("Geocodes.realm")
@@ -78,7 +78,7 @@ class BaseViewController: UITableViewController, UIDocumentPickerDelegate {
                     }
                 }
             }
-            DispatchQueue.main.async { [weak self] in
+            await MainActor.run { [weak self] in            
                 self?.hideSpinner()
             }
         }
@@ -125,7 +125,7 @@ class BaseViewController: UITableViewController, UIDocumentPickerDelegate {
         let url = urls[0]
         if url.pathExtension == "realm" {
             openRealm(from: url)
-        } else if url.pathExtension == "xml" {
+        } else {
             importCodes(from: url)
         }
     }

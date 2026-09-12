@@ -39,7 +39,7 @@ class CountiesViewController: BaseViewController {
             do {
                 let data = try Data(contentsOf: url)
                 guard let content = String(data: data, encoding: .utf8) else {
-                    print("States import: unable to decode file as UTF-8")
+                    print("Counties import: unable to decode file as UTF-8")
                     return
                 }
                 // Split into non-empty lines
@@ -83,7 +83,7 @@ class CountiesViewController: BaseViewController {
                     }
                 }
             } catch {
-                print("States import failed: \(error)")
+                print("Counties import failed: \(error)")
             }
         }
     }

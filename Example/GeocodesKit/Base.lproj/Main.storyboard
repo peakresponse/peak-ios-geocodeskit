@@ -236,7 +236,7 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem enabled="NO" title="Export" id="43E-1c-jo9">
+                            <barButtonItem title="Export" id="43E-1c-jo9">
                                 <connections>
                                     <action selector="exportPressed" destination="EcD-z7-irC" id="3O2-Ef-lEs"/>
                                 </connections>
@@ -300,7 +300,7 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem enabled="NO" title="Export" id="cMd-OW-bDe">
+                            <barButtonItem title="Export" id="cMd-OW-bDe">
                                 <connections>
                                     <action selector="exportPressed" destination="vdu-XO-dW9" id="HuI-Dz-3ls"/>
                                 </connections>
@@ -365,7 +365,7 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem enabled="NO" title="Export" id="AxZ-xF-Rov">
+                            <barButtonItem title="Export" id="AxZ-xF-Rov">
                                 <connections>
                                     <action selector="exportPressed" destination="TQc-7s-8mo" id="4Uu-U1-Nvm"/>
                                 </connections>
